@@ -1,0 +1,36 @@
+from replit import clear
+from art import logo
+#HINT: You can call clear() to clear the output in the console.
+
+auctionbids = {}
+
+
+def createDict():
+  name = input("What is your name?\n")
+  bid = input("What is your bid?\n")
+  auctionbids[name] = bid
+
+  moreUser = input("Are there other users who wants to bid?").lower()
+  if (moreUser == 'yes'):
+    clear()
+    createDict()
+  else:
+    highestbid()
+
+
+def highestbid():
+
+  highestBid = 0
+  winner = ""
+
+  for key in auctionbids:
+    bidAmmount = auctionbids[key]
+    if (bidAmmount >= highestBid):
+      highestBid = bidAmmount
+      winner = key
+  print(f"THe winner is {winner} with the highest bid of ${highestBid}")
+
+
+print(logo)
+
+createDict()
